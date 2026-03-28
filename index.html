@@ -1,525 +1,382 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Rachies Tavern 💗</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<title>Rachies Tavern 💗</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * { box-sizing: border-box; }
+<style>
+*{box-sizing:border-box}
 
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      background: linear-gradient(to bottom, #fff6f9, #ffeef3);
-      color: #333;
-    }
+body{
+font-family:'Segoe UI',sans-serif;
+margin:0;
+background:linear-gradient(to bottom,#fff6f9,#ffeef3);
+color:#333;
+}
 
-    header {
-      text-align: center;
-      padding: 40px 20px;
-      background: #ffd6e0;
-      animation: fadeIn 0.8s ease;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.05);
-    }
+header{
+text-align:center;
+padding:40px;
+background:#ffd6e0;
+}
 
-    h1 { margin: 0; }
+section{
+max-width:900px;
+margin:auto;
+padding:24px;
+}
 
-    section {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 24px;
-    }
+.card{
+background:white;
+border-radius:18px;
+padding:20px;
+margin-bottom:20px;
+box-shadow:0 8px 24px rgba(0,0,0,0.06);
+}
 
-    .card {
-      background: white;
-      border-radius: 18px;
-      padding: 20px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-      margin-bottom: 20px;
-      animation: fadeInUp 0.7s ease;
-    }
+.menu-grid{
+display:grid;
+gap:14px;
+}
 
-    .menu-grid {
-      display: grid;
-      gap: 14px;
-    }
+.item{
+background:white;
+padding:16px;
+border-radius:16px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 6px 16px rgba(0,0,0,0.06);
+}
 
-    .item {
-      background: white;
-      padding: 16px;
-      border-radius: 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      transition: 0.25s ease;
-      box-shadow: 0 8px 22px rgba(0,0,0,0.05);
-    }
+.item-left{
+display:flex;
+flex-direction:column;
+}
 
-    .item:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 14px 26px rgba(0,0,0,0.08);
-    }
+.item-name{
+font-weight:700;
+}
 
-    .item-left {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
+.item-desc{
+font-size:0.9rem;
+opacity:0.7;
+}
 
-    .item-name {
-      font-weight: 700;
-    }
+.btn{
+background:#ff8fab;
+color:white;
+padding:10px 16px;
+border-radius:999px;
+border:none;
+cursor:pointer;
+}
 
-    .item-desc {
-      font-size: 0.92rem;
-      opacity: 0.75;
-    }
+.btn:hover{
+background:#ff6f91;
+}
 
-    .sold-out {
-      opacity: 0.5;
-      filter: grayscale(0.2);
-    }
+.cart-item{
+display:flex;
+justify-content:space-between;
+margin:6px 0;
+}
 
-    .sold-out-label {
-      font-size: 0.85rem;
-      color: #c93f67;
-      font-weight: 700;
-    }
+.total{
+font-weight:bold;
+font-size:18px;
+margin-top:10px;
+}
 
-    .btn {
-      background: #ff8fab;
-      color: white;
-      padding: 10px 18px;
-      border-radius: 999px;
-      border: none;
-      cursor: pointer;
-      transition: 0.25s ease;
-      font-weight: 600;
-    }
+input,select,textarea{
+width:100%;
+padding:10px;
+margin:8px 0;
+border-radius:10px;
+border:1px solid #ddd;
+}
 
-    .btn:hover {
-      transform: scale(1.06);
-      background: #ff6f91;
-    }
+.payment-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+}
 
-    .btn.secondary {
-      background: #f4b6c7;
-      color: #6b2b3e;
-    }
+.payment-card{
+background:#fff8fb;
+padding:16px;
+border-radius:14px;
+border:1px solid #f2dbe2;
+}
 
-    .btn.secondary:hover {
-      background: #eea8bc;
-    }
+.payment-card img{
+max-width:220px;
+width:100%;
+display:block;
+margin-top:10px;
+background:white;
+border-radius:12px;
+}
 
-    .btn:disabled {
-      background: #ddd;
-      color: #888;
-      cursor: not-allowed;
-      transform: none;
-    }
+.result-box{
+margin-top:16px;
+padding:12px;
+background:#fff8fb;
+border-radius:12px;
+display:none;
+}
 
-    .cart-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      padding: 10px 0;
-      border-bottom: 1px solid #f2dbe2;
-    }
+.loyalty{
+color:#ff6f91;
+font-weight:bold;
+}
 
-    .cart-item:last-child {
-      border-bottom: none;
-    }
+.admin-link{
+font-size:0.9rem;
+margin-top:10px;
+display:inline-block;
+}
 
-    .total {
-      font-size: 1.15rem;
-      font-weight: 700;
-      margin-top: 14px;
-      color: #c93f67;
-    }
+@media(max-width:700px){
+.payment-grid{grid-template-columns:1fr}
+}
 
-    .form-group {
-      margin: 12px 0;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 6px;
-      font-weight: 600;
-    }
-
-    input, select, textarea {
-      width: 100%;
-      padding: 11px 12px;
-      border-radius: 12px;
-      border: 1px solid #e8cfd8;
-      font: inherit;
-      background: #fff;
-    }
-
-    .payment-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-      margin-top: 10px;
-    }
-
-    .payment-card {
-      background: #fff8fb;
-      border: 1px solid #f5d7e1;
-      border-radius: 16px;
-      padding: 16px;
-    }
-
-    .payment-card img {
-      max-width: 220px;
-      width: 100%;
-      display: block;
-      margin-top: 10px;
-      border-radius: 12px;
-    }
-
-    .checkout-actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 16px;
-    }
-
-    .result-box {
-      margin-top: 16px;
-      padding: 14px;
-      border-radius: 14px;
-      background: #fff8fb;
-      border: 1px solid #f5d7e1;
-      white-space: pre-wrap;
-      line-height: 1.45;
-      display: none;
-    }
-
-    .loyalty {
-      color: #ff6f91;
-      font-weight: 700;
-    }
-
-    details.admin-box {
-      margin-top: 8px;
-      background: #fff;
-      border-radius: 14px;
-      padding: 14px 16px;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.05);
-    }
-
-    details summary {
-      cursor: pointer;
-      font-weight: 700;
-      color: #a93b5d;
-    }
-
-    .hint {
-      font-size: 0.9rem;
-      opacity: 0.75;
-      margin-top: 6px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 28px 20px 40px;
-      opacity: 0.75;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(18px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media (max-width: 700px) {
-      .payment-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+</style>
 </head>
+
 <body>
 
-  <header>
-    <h1>Rachies Tavern 💗</h1>
-    <p>Cozy Home Café in Tampines</p>
-  </header>
+<header>
+<h1>Rachies Tavern 💗</h1>
+<p>Cozy Home Café in Tampines</p>
+</header>
 
-  <section>
-    <div class="card">
-      <h2>🍰 Menu</h2>
-      <div id="menu" class="menu-grid"></div>
-      <p class="hint">Menu updates automatically from your GitHub menu file.</p>
-    </div>
+<section>
 
-    <div class="card">
-      <h2>🛒 Your Cart</h2>
-      <div id="cart"></div>
-      <div class="total">Total: $<span id="total">0.00</span></div>
-    </div>
+<div class="card">
+<h2>🍰 Menu</h2>
+<div id="menu" class="menu-grid"></div>
+</div>
 
-    <div class="card">
-      <h2>💳 Checkout</h2>
+<div class="card">
+<h2>🛒 Cart</h2>
+<div id="cart"></div>
+<div class="total">Total: $<span id="total">0.00</span></div>
+</div>
 
-      <div class="form-group">
-        <label for="name">Your Name</label>
-        <input id="name" placeholder="Enter your name" />
-      </div>
+<div class="card">
 
-      <div class="form-group">
-        <label for="phone">Phone Number</label>
-        <input id="phone" placeholder="Enter your phone number" />
-      </div>
+<h2>💳 Checkout</h2>
 
-      <div class="form-group">
-        <label for="pickup">Pickup Time</label>
-        <select id="pickup">
-          <option value="7.30am-9.30am">7.30am-9.30am</option>
-          <option value="10.00am-12.00pm">10.00am-12.00pm</option>
-          <option value="1.00pm-3.00pm">1.00pm-3.00pm</option>
-        </select>
-      </div>
+<input id="name" placeholder="Your name">
+<input id="phone" placeholder="Phone number">
 
-      <div class="form-group">
-        <label for="payment">Payment Method</label>
-        <select id="payment">
-          <option value="paynow (prefered)">PayNow</option>
-          <option value="cash">Cash</option>
-        </select>
-      </div>
+<select id="pickup">
+<option value="7.30am-9.30am">7.30am-9.30am</option>
+<option value="10am-12pm">10am-12pm</option>
+<option value="1pm-3pm">1pm-3pm</option>
+</select>
 
-      <div class="form-group">
-        <label for="notes">Special Requests</label>
-        <textarea id="notes" rows="3" placeholder="Less sugar, no ice, extra topping, etc."></textarea>
-      </div>
+<select id="payment">
+<option value="paynow (prefered)">PayNow</option>
+<option value="cash">Cash</option>
+</select>
 
-      <div class="payment-grid">
-        <div class="payment-card">
-          <h3>PayNow</h3>
-          <p><b>Total to Pay:</b> $<span id="paynowTotal">0.00</span></p>
-          <p>Scan the QR below and transfer the exact amount.</p>
-          <p><b>Reference:</b> RT + your phone number</p>
-          <p>Example: <b>RT91234567</b></p>
-          <img src="paynow.png" alt="PayNow QR" />
-        </div>
+<textarea id="notes" placeholder="Special requests"></textarea>
 
-        <div class="payment-card">
-          <h3>Cash</h3>
-          <p>Pay upon pickup.</p>
-          <p class="hint">If paying cash, your form will be prefilled accordingly.</p>
-        </div>
-      </div>
+<div class="payment-grid">
 
-      <div class="checkout-actions">
-        <button class="btn" onclick="checkout()">Place Order 💗</button>
-        <button class="btn secondary" onclick="clearCart()">Clear Cart</button>
-      </div>
+<div class="payment-card">
 
-      <div id="orderResult" class="result-box"></div>
-    </div>
+<h3>PayNow</h3>
 
-    <div class="card">
-      <h2>🎁 Loyalty</h2>
-      <p class="loyalty" id="points">Points: 0</p>
-      <p>Example: 10 points = 1 free drink ☕</p>
-    </div>
+<p><b>Total to Pay:</b> $<span id="paynowTotal">0.00</span></p>
 
-    <details class="admin-box">
-      <summary>🔒 Admin Notes</summary>
-      <p><b>To edit menu:</b> open <code>menu.json</code> in your GitHub repo and change items there.</p>
-      <p><b>To mark sold out:</b> change <code>"available": true</code> to <code>false</code>.</p>
-      <p><b>To add item:</b> copy one menu object and change the text and price.</p>
-      <p><b>PayNow QR:</b> upload your QR image as <code>paynow.png</code> in the same repo.</p>
-    </details>
-  </section>
+<p>Scan QR and send exact amount</p>
 
-  <footer>
-    Rachies Tavern 💗
-  </footer>
+<p><b>Reference:</b> RT + phone number</p>
 
-  <script>
-    let cart = [];
-    let menuItems = [];
+<img src="paynow.png"
+alt="PayNow QR"
+onerror="this.style.display='none';document.getElementById('qrError').style.display='block';">
 
-    async function loadMenu() {
-      try {
-        const response = await fetch('menu.json');
-        menuItems = await response.json();
-        renderMenu();
-      } catch (error) {
-        document.getElementById('menu').innerHTML = '<p>Menu failed to load. Please check menu.json.</p>';
-      }
-    }
+<p id="qrError" style="display:none;font-size:13px;">
+QR missing — upload file named <b>paynow.png</b>
+</p>
 
-    function renderMenu() {
-      const menuDiv = document.getElementById('menu');
-      menuDiv.innerHTML = '';
+</div>
 
-      menuItems.forEach(item => {
-        const itemDiv = document.createElement('div');
-        itemDiv.className = 'item' + (item.available ? '' : ' sold-out');
+<div class="payment-card">
+<h3>Cash</h3>
+<p>Pay during pickup</p>
+</div>
 
-        itemDiv.innerHTML = `
-          <div class="item-left">
-            <div class="item-name">${item.name} — $${Number(item.price).toFixed(2)}</div>
-            <div class="item-desc">${item.description || ''}</div>
-            ${item.available ? '' : '<div class="sold-out-label">Sold Out</div>'}
-          </div>
-          <button class="btn" ${item.available ? '' : 'disabled'}>
-            ${item.available ? 'Add' : 'Unavailable'}
-          </button>
-        `;
+</div>
 
-        const button = itemDiv.querySelector('button');
-        if (item.available) {
-          button.addEventListener('click', () => addItem(item.name, Number(item.price)));
-        }
+<br>
 
-        menuDiv.appendChild(itemDiv);
-      });
-    }
+<button class="btn" onclick="checkout()">Place Order 💗</button>
+<button class="btn" onclick="clearCart()">Clear Cart</button>
 
-    function addItem(name, price) {
-      cart.push({ name, price });
-      updateCart();
-    }
+<div id="orderResult" class="result-box"></div>
 
-    function removeItem(index) {
-      cart.splice(index, 1);
-      updateCart();
-    }
+</div>
 
-    function clearCart() {
-      cart = [];
-      updateCart();
-      showMessage('Cart cleared.');
-    }
+<div class="card">
+<h2>🎁 Loyalty</h2>
+<p class="loyalty" id="points">Points: 0</p>
+<a class="admin-link" href="admin.html">Admin Menu Editor</a>
+</div>
 
-    function updateCart() {
-      const cartDiv = document.getElementById('cart');
-      let total = 0;
-      cartDiv.innerHTML = '';
+</section>
 
-      if (cart.length === 0) {
-        cartDiv.innerHTML = '<p>Your cart is empty.</p>';
-      } else {
-        cart.forEach((item, index) => {
-          total += item.price;
-          cartDiv.innerHTML += `
-            <div class="cart-item">
-              <div>
-                <b>${item.name}</b><br>
-                $${item.price.toFixed(2)}
-              </div>
-              <button class="btn secondary" type="button" onclick="removeItem(${index})">Remove</button>
-            </div>
-          `;
-        });
-      }
+<script>
 
-      document.getElementById('total').innerText = total.toFixed(2);
-      document.getElementById('paynowTotal').innerText = total.toFixed(2);
-    }
+let cart=[]
+let menuItems=[]
 
-    function getPoints() {
-      return parseInt(localStorage.getItem('points')) || 0;
-    }
+async function loadMenu(){
 
-    function setPoints(points) {
-      localStorage.setItem('points', points);
-      document.getElementById('points').innerText = 'Points: ' + points;
-    }
+try{
+let res=await fetch("menu.json")
+menuItems=await res.json()
+renderMenu()
+}
+catch{
+document.getElementById("menu").innerHTML="Menu failed to load"
+}
 
-    function showMessage(text) {
-      const box = document.getElementById('orderResult');
-      box.style.display = 'block';
-      box.textContent = text;
-    }
+}
 
-    function checkout() {
-      if (cart.length === 0) {
-        alert('Cart is empty!');
-        return;
-      }
+function renderMenu(){
 
-      const name = document.getElementById('name').value.trim();
-      const phone = document.getElementById('phone').value.trim();
-      const pickup = document.getElementById('pickup').value;
-      const payment = document.getElementById('payment').value;
-      const notes = document.getElementById('notes').value.trim();
+let menu=document.getElementById("menu")
+menu.innerHTML=""
 
-      if (!name || !phone) {
-        alert('Please enter your name and phone number.');
-        return;
-      }
+menuItems.forEach(item=>{
 
-      let total = 0;
-      let summary = 'Order:\n';
+let div=document.createElement("div")
+div.className="item"
 
-      cart.forEach(item => {
-        total += item.price;
-        summary += `${item.name} - $${item.price.toFixed(2)}\n`;
-      });
+div.innerHTML=`
+<div class="item-left">
+<div class="item-name">${item.name} — $${item.price}</div>
+<div class="item-desc">${item.description||""}</div>
+</div>
 
-      summary += `Total: $${total.toFixed(2)}`;
-      if (notes) {
-        summary += `\nNotes: ${notes}`;
-      }
+<button class="btn">Add</button>
+`
 
-      const paynowReference = payment === 'paynow (prefered)' ? `RT${phone}` : 'CASH';
+div.querySelector("button").onclick=()=>addItem(item.name,item.price)
 
-      const FORM_BASE = 'https://docs.google.com/forms/d/e/1FAIpQLSdJ7NF4Cev78xOBEHL7rhaOPkRBYCNvkm-dQFEAZ3IKG2v70g/viewform';
+menu.appendChild(div)
 
-      const ENTRY_NAME = 'entry.751012397';
-      const ENTRY_PHONE = 'entry.248092';
-      const ENTRY_PICKUP = 'entry.1759009007';
-      const ENTRY_PAYMENT = 'entry.196167867';
-      const ENTRY_REFERENCE = 'entry.1239336315';
+})
 
-      const params = new URLSearchParams();
-      params.set(ENTRY_NAME, name);
-      params.set(ENTRY_PHONE, phone);
-      params.set(ENTRY_PICKUP, pickup);
-      params.set(ENTRY_PAYMENT, payment);
-      params.set(ENTRY_REFERENCE, paynowReference);
+}
 
-      const formURL = `${FORM_BASE}?usp=pp_url&${params.toString()}`;
+function addItem(name,price){
+cart.push({name,price})
+updateCart()
+}
 
-      let points = getPoints();
-      points += cart.length;
-      setPoints(points);
+function removeItem(i){
+cart.splice(i,1)
+updateCart()
+}
 
-      showMessage(
-        `Opening order form...\n\n` +
-        `Order Summary:\n${summary}\n\n` +
-        `If paying by PayNow, use reference: ${paynowReference}\n` +
-        `Total to Pay: $${total.toFixed(2)}`
-      );
+function clearCart(){
+cart=[]
+updateCart()
+}
 
-      window.open(formURL, '_blank');
+function updateCart(){
 
-      cart = [];
-      updateCart();
-    }
+let cartDiv=document.getElementById("cart")
+cartDiv.innerHTML=""
 
-    setPoints(getPoints());
-    updateCart();
-    loadMenu();
-  </script>
+let total=0
+
+cart.forEach((item,i)=>{
+
+total+=item.price
+
+cartDiv.innerHTML+=`
+<div class="cart-item">
+<span>${item.name}</span>
+<span>$${item.price.toFixed(2)}</span>
+<button onclick="removeItem(${i})">x</button>
+</div>
+`
+
+})
+
+document.getElementById("total").innerText=total.toFixed(2)
+document.getElementById("paynowTotal").innerText=total.toFixed(2)
+
+}
+
+function getPoints(){
+return parseInt(localStorage.getItem("points"))||0
+}
+
+function setPoints(p){
+localStorage.setItem("points",p)
+document.getElementById("points").innerText="Points: "+p
+}
+
+function checkout(){
+
+if(cart.length===0){
+alert("Cart empty")
+return
+}
+
+let name=document.getElementById("name").value
+let phone=document.getElementById("phone").value
+let pickup=document.getElementById("pickup").value
+let payment=document.getElementById("payment").value
+let notes=document.getElementById("notes").value
+
+let total=0
+let summary="Order:\n"
+
+cart.forEach(i=>{
+total+=i.price
+summary+=`${i.name} - $${i.price}\n`
+})
+
+summary+=`Total: $${total}`
+
+let ref=payment==="paynow (prefered)"?`RT${phone}`:"CASH"
+
+const FORM="https://docs.google.com/forms/d/e/1FAIpQLSdJ7NF4Cev78xOBEHL7rhaOPkRBYCNvkm-dQFEAZ3IKG2v70g/viewform"
+
+const params=new URLSearchParams()
+
+params.set("entry.751012397",name)
+params.set("entry.248092",phone)
+params.set("entry.1759009007",pickup)
+params.set("entry.196167867",payment)
+params.set("entry.1239336315",ref)
+
+window.open(`${FORM}?usp=pp_url&${params.toString()}`)
+
+let points=getPoints()
+points+=cart.length
+setPoints(points)
+
+cart=[]
+updateCart()
+
+}
+
+setPoints(getPoints())
+updateCart()
+loadMenu()
+
+</script>
+
 </body>
 </html>
