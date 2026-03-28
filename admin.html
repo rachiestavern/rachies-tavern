@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Menu Editor</title>
+</head>
+
+<body>
+
+<h2>Menu Editor</h2>
+
+<textarea id="menu" style="width:100%;height:400px"></textarea>
+
+<br><br>
+
+<button onclick="download()">Download menu.json</button>
+
+<script>
+
+fetch("menu.json")
+.then(r=>r.text())
+.then(t=>document.getElementById("menu").value=t)
+
+function download(){
+
+let blob=new Blob([document.getElementById("menu").value],{type:"application/json"})
+
+let a=document.createElement("a")
+
+a.href=URL.createObjectURL(blob)
+
+a.download="menu.json"
+
+a.click()
+
+}
+
+</script>
+
+</body>
+</html>
