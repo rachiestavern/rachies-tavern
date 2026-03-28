@@ -69,6 +69,7 @@ section {
   padding: 20px;
   border-radius: 15px;
   animation: fadeInUp 0.8s ease;
+  margin: 0 25px 25px;
 }
 
 .cart-item {
@@ -77,29 +78,41 @@ section {
   margin: 5px 0;
 }
 
-/* TOTAL */
 .total {
   font-size: 20px;
   font-weight: bold;
   margin-top: 10px;
 }
 
-/* INPUTS */
 input, select {
   padding: 10px;
   width: 100%;
   margin: 8px 0;
   border-radius: 10px;
   border: 1px solid #ddd;
+  box-sizing: border-box;
 }
 
-/* LOYALTY */
 #points {
   font-size: 18px;
   color: #ff6f91;
 }
 
-/* ANIMATIONS */
+.form-section {
+  background: #fff;
+  margin: 25px;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+iframe {
+  display: block;
+  width: 100%;
+  border: 0;
+  border-radius: 12px;
+  background: white;
+}
+
 @keyframes fadeIn {
   from {opacity: 0;}
   to {opacity: 1;}
@@ -129,15 +142,14 @@ input, select {
   <h2>🍰 Menu</h2>
 
   <div class="item">
-    <span>Matcha Latte - $5</span>
-    <button class="btn" onclick="addItem('Matcha Latte',5)">Add</button>
+    <span>Matcha Latte - $5.00</span>
+    <button class="btn" onclick="addItem('Matcha Latte', 5)">Add</button>
   </div>
 
   <div class="item">
-    <span>Strawberry Cheesecake - $6.5</span>
-    <button class="btn" onclick="addItem('Cheesecake',6.5)">Add</button>
+    <span>Strawberry Cheesecake - $6.50</span>
+    <button class="btn" onclick="addItem('Strawberry Cheesecake', 6.5)">Add</button>
   </div>
-
 </section>
 
 <section class="cart">
@@ -169,16 +181,30 @@ input, select {
   <p id="points">Points: 0</p>
 </section>
 
+<section class="form-section">
+  <h2>🛒 Confirm Your Order</h2>
+  <p>After checking out above, please fill in this order form.</p>
+
+  <iframe 
+    src="https://docs.google.com/forms/d/e/1FAIpQLSdJ7NF4Cev78xOBEHL7rhaOPkRBYCNvkm-dQFEAZ3IKG2v70g/viewform?embedded=true"
+    height="1500"
+    frameborder="0"
+    marginheight="0"
+    marginwidth="0">
+    Loading…
+  </iframe>
+</section>
+
 <script>
 let cart = [];
 
 function addItem(name, price) {
-  cart.push({name, price});
+  cart.push({ name, price });
   updateCart();
 }
 
 function updateCart() {
-  let cartDiv = document.getElementById("cart");
+  const cartDiv = document.getElementById("cart");
   let total = 0;
 
   cartDiv.innerHTML = "";
@@ -188,8 +214,8 @@ function updateCart() {
 
     cartDiv.innerHTML += `
       <div class="cart-item">
-        ${item.name} - $${item.price}
-        <button onclick="removeItem(${index})">❌</button>
+        <span>${item.name} - $${item.price.toFixed(2)}</span>
+        <button class="btn" type="button" onclick="removeItem(${index})">❌</button>
       </div>
     `;
   });
@@ -206,40 +232,40 @@ function getPoints() {
   return parseInt(localStorage.getItem("points")) || 0;
 }
 
-function setPoints(p) {
-  localStorage.setItem("points", p);
-  document.getElementById("points").innerText = "Points: " + p;
+function setPoints(points) {
+  localStorage.setItem("points", points);
+  document.getElementById("points").innerText = "Points: " + points;
 }
 
 function checkout() {
-  if(cart.length === 0){
+  if (cart.length === 0) {
     alert("Cart is empty!");
     return;
   }
 
-  let name = document.getElementById("name").value;
-  let phone = document.getElementById("phone").value;
-  let payment = document.getElementById("payment").value;
+  const name = document.getElementById("name").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const payment = document.getElementById("payment").value;
 
   let total = 0;
-  let summary = "Order:\\n";
+  let summary = "Order:\n";
 
-  cart.forEach(i => {
-    total += i.price;
-    summary += `${i.name} - $${i.price}\\n`;
+  cart.forEach(item => {
+    total += item.price;
+    summary += `${item.name} - $${item.price.toFixed(2)}\n`;
   });
 
-  summary += `Total: $${total.toFixed(2)}\\n`;
-  summary += `Payment: ${payment}\\n`;
-  summary += `Name: ${name}\\nPhone: ${phone}`;
+  summary += `Total: $${total.toFixed(2)}\n`;
+  summary += `Payment: ${payment}\n`;
+  summary += `Name: ${name}\n`;
+  summary += `Phone: ${phone}`;
 
-  // Add loyalty points
   let points = getPoints();
   points += cart.length;
   setPoints(points);
 
   document.getElementById("orderResult").innerText =
-    "📸 Screenshot & send via Telegram/WhatsApp:\\n\\n" + summary;
+    "Copy this into the Google Form below:\n\n" + summary;
 
   cart = [];
   updateCart();
@@ -247,30 +273,6 @@ function checkout() {
 
 setPoints(getPoints());
 </script>
-<hr>
-
-<h2>🛒 Confirm Your Order</h2>
-
-<p>After checking out above, please fill in this order form.</p>
-
-<iframe 
-<hr>
-
-<section>
-  <h2>🛒 Confirm Your Order</h2>
-  <p>After checking out above, please fill in this order form.</p>
-
-  <iframe 
-    src="https://docs.google.com/forms/d/e/1FAIpQLSdJ7NF4Cev78xOBEHL7rhaOPkRBYCNvkm-dQFEAZ3IKG2v70g/viewform?embedded=true" 
-    width="100%" 
-    height="1500" 
-    frameborder="0" 
-    marginheight="0" 
-    marginwidth="0"
-    style="border:0; background:white;">
-    Loading…
-  </iframe>
-</section>
 
 </body>
 </html>
