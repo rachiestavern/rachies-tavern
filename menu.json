@@ -1,0 +1,40 @@
+[
+  {
+    "category": "Bakes",
+    "items": [
+      {
+        "name": "Banana Sorbet",
+        "price": 3,
+        "description": "Healthy banana sorbet",
+        "image": "",
+        "available": true
+      },
+      {
+        "name": "Chocolate Chunk Brownies",
+        "price": 8.5,
+        "description": "Gluten-free dark chocolate brownies",
+        "image": "",
+        "available": true
+      }
+    ]
+  },
+  {
+    "category": "Drinks",
+    "items": [
+      {
+        "name": "Latte",
+        "price": 4,
+        "description": "Double shot espresso with milk",
+        "image": "",
+        "available": true
+      },
+      {
+        "name": "Strawberry Matcha",
+        "price": 7,
+        "description": "Matcha with strawberry compote",
+        "image": "",
+        "available": true
+      }
+    ]
+  }
+]
