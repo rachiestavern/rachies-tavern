@@ -4,16 +4,61 @@
     "items": [
       {
         "name": "Banana Sorbet",
-        "price": 3,
-        "description": "Healthy banana sorbet",
-        "image": "",
+        "price": 3.0,
+        "description": "Want a healthy sweet treat? This is for you! Banana Sorbet - NO eggs, NO dairy, NO preservatives.",
+        "image": "https://emofly.b-cdn.net/hbd_exvhac6ayb3ZKT/width%3A256/plain/https%3A//storage.googleapis.com/takeapp/media/cmn7cjfhb000304l5hunfdhy3.jpeg",
+        "badge": "Popular",
         "available": true
       },
       {
-        "name": "Chocolate Chunk Brownies",
+        "name": "Gluten Free Chocolate Chunk Brownies",
         "price": 8.5,
-        "description": "Gluten-free dark chocolate brownies",
-        "image": "",
+        "description": "Fudgy gluten-free brownies using 70% dark chocolate, almond flour and dark cocoa powder.",
+        "image": "https://emofly.b-cdn.net/hbd_exvhac6ayb3ZKT/width%3A256/plain/https%3A//storage.googleapis.com/takeapp/media/cmg1tdyjf000b04lbd8qr5h0u.jpeg",
+        "available": true
+      },
+      {
+        "name": "Classic Chocolate Chip Cookies with Sea Salt",
+        "price": 3.0,
+        "description": "OG cookie dough with 70% dark chocolate and sprinkled with sea salt.",
+        "image": "https://emofly.b-cdn.net/hbd_exvhac6ayb3ZKT/width%3A256/plain/https%3A//storage.googleapis.com/takeapp/media/cmed2161b000804js4rzx4mb9.jpeg",
+        "available": true
+      },
+      {
+        "name": "Strawberry Caramel Cookie",
+        "price": 4.5,
+        "description": "OG cookie dough using Valrhona chocolate. Not too sweet.",
+        "image": "https://emofly.b-cdn.net/hbd_exvhac6ayb3ZKT/width%3A256/plain/https%3A//storage.googleapis.com/takeapp/media/cmix31lia000h04lbe230bigc.jpeg",
+        "available": true
+      },
+      {
+        "name": "You Tiao Caramel Cookie",
+        "price": 4.8,
+        "description": "OG cookie base, halal youtiao, Valrhona Dulcey chocolate, sea salt and sesame seeds.",
+        "image": "https://emofly.b-cdn.net/hbd_exvhac6ayb3ZKT/width%3A256/plain/https%3A//storage.googleapis.com/takeapp/media/cmlrilrna000n04kzh9edc4c5.jpeg",
+        "available": true
+      },
+      {
+        "name": "Orange Fudge Cookie",
+        "price": 4.5,
+        "description": "Dark chocolate cookie base with white caramel chocolate chunks using Valrhona Dulcey chocolate.",
+        "image": "https://emofly.b-cdn.net/hbd_exvhac6ayb3ZKT/width%3A256/plain/https%3A//storage.googleapis.com/takeapp/media/cmkjpae8r000004kz4n8adcl2.jpeg",
+        "badge": "New",
+        "available": true
+      },
+      {
+        "name": "Classic Banana Cake",
+        "price": 9.5,
+        "description": "Dairy-free and vegan classic banana cake.",
+        "image": "https://emofly.b-cdn.net/hbd_exvhac6ayb3ZKT/width%3A256/plain/https%3A//storage.googleapis.com/takeapp/media/cmed1zjrc000504k085rbet2a.jpeg",
+        "badge": "Sale",
+        "available": true
+      },
+      {
+        "name": "Blueberry Crumble",
+        "price": 22.0,
+        "description": "Made with homemade yogurt, lemon zest and lots of fresh blueberries.",
+        "image": "https://emofly.b-cdn.net/hbd_exvhac6ayb3ZKT/width%3A256/plain/https%3A//storage.googleapis.com/takeapp/media/cmeft01k8000204lfbni36wzq.jpeg",
         "available": true
       }
     ]
@@ -23,16 +68,111 @@
     "items": [
       {
         "name": "Latte",
-        "price": 4,
-        "description": "Double shot espresso with milk",
+        "price": 4.0,
+        "description": "Double shot espresso with regular milk.",
+        "image": "https://emofly.b-cdn.net/hbd_exvhac6ayb3ZKT/width%3A256/plain/https%3A//storage.googleapis.com/takeapp/media/cmed3atkx000504ks8vka2bci.jpeg",
+        "available": true
+      },
+      {
+        "name": "The Orange Drip",
+        "price": 5.5,
+        "description": "Homemade candied orange slices and orange syrup with double shot espresso.",
+        "image": "https://emofly.b-cdn.net/hbd_exvhac6ayb3ZKT/width%3A256/plain/https%3A//storage.googleapis.com/takeapp/media/cmkjpfsbw000304leddagfz8n.jpeg",
+        "available": true
+      },
+      {
+        "name": "Basque Mocha",
+        "price": 5.5,
+        "description": "Inspired by the classic basque cheesecake, creamy and smooth.",
+        "image": "https://emofly.b-cdn.net/hbd_exvhac6ayb3ZKT/width%3A256/plain/https%3A//storage.googleapis.com/takeapp/media/cmkjp9jlq000104l84ndeenzv.jpeg",
+        "available": true
+      },
+      {
+        "name": "Americano",
+        "price": 3.0,
+        "description": "Double shot espresso with hot water.",
         "image": "",
         "available": true
       },
       {
+        "name": "Pure Matcha Bliss",
+        "price": 5.0,
+        "description": "Toki Mori ceremonial grade matcha with regular milk.",
+        "image": "https://emofly.b-cdn.net/hbd_exvhac6ayb3ZKT/width%3A256/plain/https%3A//storage.googleapis.com/takeapp/media/cmelbm83p000604jx2a3p11hu.jpeg",
+        "available": true
+      },
+      {
+        "name": "Yuzu Matcha",
+        "price": 7.0,
+        "description": "Toki Mori ceremonial matcha, yuzu and orange pulp with generous yuzu juice.",
+        "image": "https://emofly.b-cdn.net/hbd_exvhac6ayb3ZKT/width%3A256/plain/https%3A//storage.googleapis.com/takeapp/media/cmed3g4cr000804l58xan62cp.jpeg",
+        "available": true
+      },
+      {
         "name": "Strawberry Matcha",
-        "price": 7,
-        "description": "Matcha with strawberry compote",
+        "price": 7.0,
+        "description": "Toki Mori ceremonial matcha, handmade strawberry compote and vanilla bean syrup.",
+        "image": "https://emofly.b-cdn.net/hbd_exvhac6ayb3ZKT/width%3A256/plain/https%3A//storage.googleapis.com/takeapp/media/cmhtx0lle000304l7dtmi0cyf.jpeg",
+        "badge": "Popular",
+        "available": true
+      },
+      {
+        "name": "Iced Earl Grey Hojicha",
+        "price": 6.0,
+        "description": "Earl Grey tea, regular milk, homemade vanilla syrup and smooth hojicha.",
+        "image": "https://emofly.b-cdn.net/hbd_exvhac6ayb3ZKT/width%3A256/plain/https%3A//storage.googleapis.com/takeapp/media/cmlrimfuh000o04kzczda1h7w.jpeg",
+        "available": true
+      },
+      {
+        "name": "Lychee Fiesta",
+        "price": 4.0,
+        "description": "Using Clipper Tea's Lychee Fiesta tea leaves with real lychee fruit.",
         "image": "",
+        "available": true
+      }
+    ]
+  },
+  {
+    "category": "Retail",
+    "items": [
+      {
+        "name": "Latte Cup Clicker Keychain",
+        "price": 4.5,
+        "description": "3D printed latte cup clicker with keychain hook.",
+        "image": "https://emofly.b-cdn.net/hbd_exvhac6ayb3ZKT/width%3A256/plain/https%3A//storage.googleapis.com/takeapp/media/cmfuym7tv000004jr8jvs8cu7.jpeg",
+        "available": true
+      }
+    ]
+  },
+  {
+    "category": "Festive Treats",
+    "items": [
+      {
+        "name": "Pineapple Tart",
+        "price": 18.9,
+        "description": "",
+        "image": "https://emofly.b-cdn.net/hbd_exvhac6ayb3ZKT/width%3A256/plain/https%3A//storage.googleapis.com/takeapp/media/cmmykzoo4000404jv136112cx.jpeg",
+        "available": true
+      },
+      {
+        "name": "Trio Prosperity Set",
+        "price": 48.0,
+        "description": "",
+        "image": "https://emofly.b-cdn.net/hbd_exvhac6ayb3ZKT/width%3A256/plain/https%3A//storage.googleapis.com/takeapp/media/cmmyky9gh000004jpcbcmeacb.jpeg",
+        "available": true
+      },
+      {
+        "name": "Almond Cookie",
+        "price": 9.9,
+        "description": "",
+        "image": "https://emofly.b-cdn.net/hbd_exvhac6ayb3ZKT/width%3A256/plain/https%3A//storage.googleapis.com/takeapp/media/cmmykza65000004jv0iwy80hm.jpeg",
+        "available": true
+      },
+      {
+        "name": "Butter Cookie",
+        "price": 11.9,
+        "description": "",
+        "image": "https://emofly.b-cdn.net/hbd_exvhac6ayb3ZKT/width%3A256/plain/https%3A//storage.googleapis.com/takeapp/media/cmmykyvgf000104jp5w5i8gtt.jpeg",
         "available": true
       }
     ]
