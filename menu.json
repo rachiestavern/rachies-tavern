@@ -8,7 +8,14 @@
         "description": "Want a healthy sweet treat? This is for you! Banana Sorbet - NO eggs, NO dairy, NO preservatives.",
         "image": "https://emofly.b-cdn.net/hbd_exvhac6ayb3ZKT/width%3A256/plain/https%3A//storage.googleapis.com/takeapp/media/cmn7cjfhb000304l5hunfdhy3.jpeg",
         "badge": "Popular",
-        "available": true
+        "available": true,
+        "options": [
+          { "label": "No topping", "price": 0 },
+          { "label": "Biscoff Crumbs", "price": 0.2 },
+          { "label": "Peanut Butter", "price": 0.2 },
+          { "label": "Granola (contain almonds)", "price": 0.2 },
+          { "label": "Raisins & Chia Seed Mix", "price": 0.2 }
+        ]
       },
       {
         "name": "Gluten Free Chocolate Chunk Brownies",
