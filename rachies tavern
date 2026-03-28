@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Rachies Tavern 💗</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  background: linear-gradient(to bottom, #fff6f9, #ffeef3);
+  color: #333;
+}
+
+/* HEADER */
+header {
+  text-align: center;
+  padding: 40px;
+  background: #ffd6e0;
+  animation: fadeIn 1s ease;
+}
+
+h1 {
+  margin: 0;
+}
+
+/* BUTTONS */
+.btn {
+  background: #ff8fab;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+  background: #ff6f91;
+}
+
+/* SECTIONS */
+section {
+  padding: 25px;
+}
+
+/* MENU ITEMS */
+.item {
+  background: white;
+  padding: 15px;
+  margin: 12px 0;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* CART */
+.cart {
+  background: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  animation: fadeInUp 0.8s ease;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0;
+}
+
+/* TOTAL */
+.total {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* INPUTS */
+input, select {
+  padding: 10px;
+  width: 100%;
+  margin: 8px 0;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+/* LOYALTY */
+#points {
+  font-size: 18px;
+  color: #ff6f91;
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Rachies Tavern 💗</h1>
+  <p>Cozy Home Café in Tampines</p>
+</header>
+
+<section>
+  <h2>🍰 Menu</h2>
+
+  <div class="item">
+    <span>Matcha Latte - $5</span>
+    <button class="btn" onclick="addItem('Matcha Latte',5)">Add</button>
+  </div>
+
+  <div class="item">
+    <span>Strawberry Cheesecake - $6.5</span>
+    <button class="btn" onclick="addItem('Cheesecake',6.5)">Add</button>
+  </div>
+
+</section>
+
+<section class="cart">
+  <h2>🛒 Your Cart</h2>
+
+  <div id="cart"></div>
+
+  <div class="total">
+    Total: $<span id="total">0.00</span>
+  </div>
+
+  <h3>Checkout</h3>
+
+  <input id="name" placeholder="Your Name">
+  <input id="phone" placeholder="Phone Number">
+
+  <select id="payment">
+    <option>PayNow</option>
+    <option>Cash</option>
+  </select>
+
+  <button class="btn" onclick="checkout()">Place Order 💗</button>
+
+  <p id="orderResult"></p>
+</section>
+
+<section>
+  <h2>🎁 Loyalty</h2>
+  <p id="points">Points: 0</p>
+</section>
+
+<script>
+let cart = [];
+
+function addItem(name, price) {
+  cart.push({name, price});
+  updateCart();
+}
+
+function updateCart() {
+  let cartDiv = document.getElementById("cart");
+  let total = 0;
+
+  cartDiv.innerHTML = "";
+
+  cart.forEach((item, index) => {
+    total += item.price;
+
+    cartDiv.innerHTML += `
+      <div class="cart-item">
+        ${item.name} - $${item.price}
+        <button onclick="removeItem(${index})">❌</button>
+      </div>
+    `;
+  });
+
+  document.getElementById("total").innerText = total.toFixed(2);
+}
+
+function removeItem(index) {
+  cart.splice(index, 1);
+  updateCart();
+}
+
+function getPoints() {
+  return parseInt(localStorage.getItem("points")) || 0;
+}
+
+function setPoints(p) {
+  localStorage.setItem("points", p);
+  document.getElementById("points").innerText = "Points: " + p;
+}
+
+function checkout() {
+  if(cart.length === 0){
+    alert("Cart is empty!");
+    return;
+  }
+
+  let name = document.getElementById("name").value;
+  let phone = document.getElementById("phone").value;
+  let payment = document.getElementById("payment").value;
+
+  let total = 0;
+  let summary = "Order:\\n";
+
+  cart.forEach(i => {
+    total += i.price;
+    summary += `${i.name} - $${i.price}\\n`;
+  });
+
+  summary += `Total: $${total.toFixed(2)}\\n`;
+  summary += `Payment: ${payment}\\n`;
+  summary += `Name: ${name}\\nPhone: ${phone}`;
+
+  // Add loyalty points
+  let points = getPoints();
+  points += cart.length;
+  setPoints(points);
+
+  document.getElementById("orderResult").innerText =
+    "📸 Screenshot & send via Telegram/WhatsApp:\\n\\n" + summary;
+
+  cart = [];
+  updateCart();
+}
+
+setPoints(getPoints());
+</script>
+
+</body>
+</html>
